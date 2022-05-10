@@ -1,11 +1,12 @@
+# Calculates deposit balance on known sum, terms and annual rate.
+
 import re
 
 
 def calc_deposit_balance(start_deposit: float, years: int,
                          annual_rate: float) -> str:
 
-    income = start_deposit * (1 + annual_rate / (100 * 12))**(years*12)
-    income = income
+    income = start_deposit * (1 + annual_rate / (100 * 12))**(years * 12)
     profit = income - start_deposit
     result = f'Your income: {round(income, 2)} BYN. '\
              f'Your profit: {round(profit, 2)} BYN'
@@ -14,6 +15,7 @@ def calc_deposit_balance(start_deposit: float, years: int,
 
 def get_user_input() -> tuple:
 
+    # Regexp for matching integers and floats.
     r = re.compile(r'^\d{0,}\.{,1}(?!$)\d{,2}$')
 
     while True:
@@ -30,6 +32,7 @@ def get_user_input() -> tuple:
             print('Invalid data! Try once more, please!')
             continue
         if term.find('.') != -1:
+            # The cost of applying one template for all inputs
             term = int(term[:term.index('.')])
         else:
             term = int(term)
