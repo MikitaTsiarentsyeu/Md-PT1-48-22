@@ -1,4 +1,4 @@
-'''Finds roots of cubic equation (ax^3 + bx^2 + cx + d = 0).
+'''Finds roots of cubic equation (ax^3 + bx^2 + cx + d = 0) by Viete formula.
 Some problems with accuracy. It will be better to use Decimal
 (or Fractions?) objects.
 To fix...
