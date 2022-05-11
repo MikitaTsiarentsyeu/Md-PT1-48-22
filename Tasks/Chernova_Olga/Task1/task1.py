@@ -7,12 +7,18 @@ new_sum = money
 
 ##It's my program. I didn't look in the internet
 
-#if (years, money,percent) is int or float:
-#    for i in range(0,years*12):
-#        new_sum +=  new_sum*percent/12/100
-#    print(f"You will have in the bank {round(new_sum,4)} the interest on the deposit will be {round((new_sum-money),4)}")
-#else:
-#    print('You have errors in the data ')
+if years.isnumeric() and money.isnumeric() and percent.isnumeric():
+    years = int(years)
+    money = int(money)
+    percent = int(percent)
+    if years > 0 and money > 0 and percent > 0:   
+       for i in range(0,years*12):
+           new_sum +=  new_sum*percent/12/100
+       print(f"You will have in the bank {round(new_sum,4)} the interest on the deposit will be {round((new_sum-money),4)}")
+    else:
+        print('You have errors in the data ')
+else:
+    print('You have errors in the data ')
 
 
 
