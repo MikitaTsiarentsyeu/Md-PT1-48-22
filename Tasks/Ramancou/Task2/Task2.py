@@ -28,10 +28,10 @@ revHours2 = {1: 'два', 2: 'три', 3: 'четыре', 4: 'пять', 5: 'ш�
 
 
 class Time:
-    """This class return string consist of 3 parts:
-    1. current time in accordance with minutes (0-min , 0<min<20, 20<min<30, 30-min, 30<min<45, 45<min<59)
-    2. word 'minutes' in appropriate case
-    3. hours in genitive case ( except min=00 and min>45 )
+    """This class returns a string consist of 3 parts:
+    1. Current time in accordance with minutes (0-min , 0<min<20, 20<min<30, 30-min, 30<min<45, 45<min<59)
+    2. Word 'minutes' in appropriate case
+    3. Hours in genitive case ( except min=00 and min>45 )
     """
     global hours_1, hours_2, revHours, hours_4, revHours2, hours_3
 
@@ -80,10 +80,9 @@ class Time:
 
 
 def convertTime(time):
+    '''return list and separate by colon'''
     start = [int(i) for i in time.split(':')]
     return start
-
-
 
 while True:
     user_choose = input('''Вам доступен следующий функционал:
@@ -91,7 +90,6 @@ while True:
     2. Завершение выполнения программы: клавиша '2'
     3. Ввод времени вручную в формате hh:mm: 
     -> ''')
-
 
     if user_choose == '1':
         time = datetime.datetime.now().strftime('%H:%M')
@@ -114,3 +112,4 @@ while True:
         print('#' * 50)
         print('Введите корректное время в формате hh:mm')
         print('#' * 50)
+        
