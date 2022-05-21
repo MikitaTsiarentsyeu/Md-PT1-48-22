@@ -53,7 +53,7 @@ if choice == "current":
     current_time = dt.now()
     print(time_convert(current_time))
 elif choice == "input":
-    input_time = dt.strptime(input("Enter time "), '%H:%M')
+    input_time = dt.strptime(input("Enter time HH:MM"), '%H:%M')
     print(time_convert(input_time))
 else:
     print('Enter the value again')
