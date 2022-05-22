@@ -58,18 +58,3 @@ else:
       elif int(user_minutes) >= 45:
          hour += 1
          print(minutes.get(int(user_minutes)), hour_a_m.get(hour))
-      
-
-      
-     
-
-
-
-
-
-
-
-
-
-
-
