@@ -42,27 +42,27 @@ def justify_text(limit: int) -> None:
         for line in rf:
             words = line.split()
 
-            while len(' '.join(words)) > limit:
-                buffer = [words.pop(0)]
-                buffer_length = len(' '.join(buffer))
+            new_lines = []
+            i = 0
 
-                while buffer_length < limit:
-                    next_word_length = len(words[0])
-                    if buffer_length + next_word_length + 1 > limit:
-                        break
-                    buffer.append(words.pop(0))
-                    buffer_length += next_word_length + 1
+            while i < len(words):
+                if len(' '.join(words[:i + 1])) > limit:
+                    new_lines.append(words[:i])
+                    words = words[i:]
+                    i = 0
+                    continue
+                i += 1
 
-                spaces = limit - buffer_length
+            for new_line in new_lines:
+                spaces = limit - len(' '.join(new_line))
 
-                for i in cycle(range(len(buffer) - 1)):
+                for i in cycle(range(len(new_line) - 1)):
                     if spaces == 0:
                         break
-                    buffer[i] += ' '
+                    new_line[i] += ' '
                     spaces -= 1
 
-                wf.write(' '.join(buffer) + '\n')
-
+                wf.write(' '.join(new_line) + '\n')
             wf.write(' '.join(words) + '\n')
 
 
