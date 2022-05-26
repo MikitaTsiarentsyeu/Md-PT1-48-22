@@ -27,7 +27,7 @@ class Solution:
 
 def recording(name,wrap):
     with open(r'..\..\!Tasks\Task3\text.txt', 'r',  encoding='utf-8') as f:
-        with open(f'{name}.txt', 'w+') as r:
+        with open(f'{name}.txt', 'w', encoding='utf-8') as r:
             long_string_list = ''.join(f.readlines()).split('\n')
             one_string = ' '.join(long_string_list).split()
             r.write('\n'.join(x := Solution().text_justify(one_string, wrap)))
