@@ -36,11 +36,11 @@ def recording(name,wrap):
 if __name__ == '__main__':
     while True:
         try:
-            user_input = int(input('Enter the column width (from 35 to 50): '))
-            len_check = True if 35 <= user_input <= 50 else False
+            user_input = input('Enter the column width (from 35 to 50): ')
+            len_check = True if user_input.isdigit() and 35 <= int(user_input) <= 50 else False
             if len_check:
                 user_name = input('Enter new file name (ex:"result"): ')
-                recording(user_name, user_input)
+                recording(user_name, int(user_input))
                 print(f'You successfully recorded {user_name}.txt file')
                 break
             else: print('Please, enter number in range from 35 to 50')
