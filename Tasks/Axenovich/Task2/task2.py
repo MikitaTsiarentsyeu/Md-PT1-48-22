@@ -12,8 +12,8 @@ elif question == '2':
         if ':' in user_time:
             if user_time.split(':')[0].isdigit():
                 if user_time.split(':')[1].isdigit():
-                    if -1 < int(user_time.split(':')[0]) < 24:
-                        if -1 < int(user_time.split(':')[1]) < 60:
+                    if int(user_time.split(':')[0]) < 24:
+                        if int(user_time.split(':')[1]) < 60:
                             break
     time_user = user_time.split(':')
     hour_user =int(time_user[0])
