@@ -7,13 +7,19 @@ while True:
         if 51 > int(user_input) > 34:
             user_input = int(user_input)
             break
-    print("Incorrect input, please try again.\n")
+        else: 
+            print("Check your input, you don't write number from 35 to 50")
+    else:
+        print("Check your input, you don't write correct number")
 
+# Simplifying a recurring function
 def write_join_text(out, line_out):
-    out.write(' '.join(line_out)+'\n')
+    out.write(' '.join(line_out) + '\n')
+
 
 with open(os.path.join(os.getcwd(), "Tasks", "!Tasks", "Task3", "text.txt"), 'r', encoding='utf-8') as text:
     with open(os.path.join(os.getcwd(), "Tasks", "Axenovich", "Task3", "formatted_file.txt"), 'w', encoding='utf-8') as copy:
+        # Open the files like this, with concern for the type OS
         for i in text:
             line_out, len_line_out = [], 0
             line = i.split()
