@@ -12,8 +12,8 @@ while True:
 def write_join_text(out, line_out):
     out.write(' '.join(line_out)+'\n')
 
-with open(os.path.join(os.getcwd(), "Tasks\\!Tasks\\Task3", "text.txt"), 'r', encoding='utf-8') as text:
-    with open(os.path.join(os.getcwd(), "Tasks\\Axenovich\\Task3", "formatted_file.txt"), 'w', encoding='utf-8') as copy:
+with open(os.path.join(os.getcwd(), "Tasks", "!Tasks", "Task3", "text.txt"), 'r', encoding='utf-8') as text:
+    with open(os.path.join(os.getcwd(), "Tasks", "Axenovich", "Task3", "formatted_file.txt"), 'w', encoding='utf-8') as copy:
         for i in text:
             line_out, len_line_out = [], 0
             line = i.split()
