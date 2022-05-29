@@ -31,7 +31,7 @@ with open("test.txt", 'r') as f:
             s = f.read(buffer)
         # for line in f:
         #     copy.write(line)
-
+'''
 with open("test.txt", 'a') as f:
     f.write("test line from append\n")
     # f.seek(0)
@@ -54,3 +54,4 @@ with open("test.txt", 'w+') as f:
     f.write("this file was empty")
     f.seek(0)
     print(f.read())
+    '''
