@@ -4,8 +4,7 @@
 # I would use the os module like this:
 # 
 # import os
-# folders = ['Tasks','Chernova_Olga','Task3']
-# way = os.path.join(*folders) + os.sep
+# way = os.getcwd() + os.sep
 # 
 # And I would use the resulting way for all text files.
 # For exemple:
