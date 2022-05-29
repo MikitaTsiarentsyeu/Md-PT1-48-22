@@ -2,7 +2,7 @@
 def readFileContent():
  import pathlib
 
- file = open(r'..\..\AnastasiyaBobko_PY\Md-PT1-48-22\Tasks\BobkoA\Task3\text.txt', 'r')
+ file = open('text.txt', 'r')
  all_of_it = file.read()
  file.close()
  return all_of_it.split(" ")
