@@ -1,12 +1,12 @@
 data = ["five thirteen two eleven seventeen two one thirteen ten four eight five nineteen", {'zero':0,'one':1,'two':2,'three':3,'four':4,'five':5,
                 'six':6,'seven':7,'eight':8,'nine':9,'ten':10,
                 'eleven':11,'twelve':12,'thirteen':13,'fourteen':14,'fifteen':15,
-                'sixteen':16,'seventeen':17,'eighteen':18,'nineteen':19}]
+                'sixteen':16,'seventeen':17,'eighteen':18,'nineteen':19}, '']
 
 
 print('1. transform text to number\n')
 
-data = [data[1][i] for i in data[0].split()]
+data = [data[1][data[2]] for data[2] in data[0].split()]
 print(data)
 
 print('\n2. 3. delete dublicate and sort list\n')
