@@ -45,7 +45,6 @@ if 35 < maxLength < 50:
                 count += 1
 
                 
-                
                       
         print('A Text was copied to a new file and formated according to the max number of symbols.')                
 else:
