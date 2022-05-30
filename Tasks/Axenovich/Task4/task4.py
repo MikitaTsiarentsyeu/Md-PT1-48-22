@@ -25,9 +25,8 @@ for data[1] in range(len(data[0])):
     if data[1] % 2 != 0:
         print(f'{data[0][data[1]]} + {data[0][data[1] + 1]} = {data[0][data[1]] + data[0][data[1] + 1]}')
     if data[1] % 2 == 0:
-        print(f'{data[0][data[1]]} * {data[0][data[1] + 1]} = {data[0][data[1]] * data[0][data[1] + 1]}')
+        print(f'{data[0][data[1]]} * {data[0][data[1] + 1]} = {data[0][data[1]] + data[0][data[1] + 1]}')
 
 print('\n5. sum odd elements\n')
 
 print(sum(data for data in data if data % 2 != 0))
-
