@@ -28,4 +28,8 @@ with open('text.txt', 'r', encoding='utf-8') as source_text:
                     changed_text.write(' '.join(line_new)+'\n')
                     line_new, len_line_new = [s], len(s) + 1            
         else:
+<<<<<<< Updated upstream
             print("The modified text is written in new file 'changed_text'")            
+=======
+            print("The modified text is written in new file 'changed_text'") 
+>>>>>>> Stashed changes
