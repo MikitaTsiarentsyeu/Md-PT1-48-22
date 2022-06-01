@@ -39,4 +39,5 @@ print(
                             map(int.__add__, numbers[1::2], numbers[2::2])),
                 ()))))
 
+# Calculate sum of all odd numbers
 print(sum(compress(numbers, map(partial(int.__rmod__, 2), numbers))))
