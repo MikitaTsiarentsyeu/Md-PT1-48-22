@@ -43,7 +43,6 @@ else:
    hour = int(user_hour)
    if hour >= 12: 
       hour -= 12
-
    if len(str(user_hour)) > 2 and len(user_minutes) > 2:
       print("Пожалуйста, ввeдите корректное время в формате НН ММ" )
    else:
