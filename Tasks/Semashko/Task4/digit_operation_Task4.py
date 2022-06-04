@@ -17,17 +17,22 @@ print(digit)
 # print(list(set(digit)))
 
 # display sums and multiplies
-for k in range(len(digit)-1):
-    if k % 2 == 0:
-        #print(k)
-        print(f'Multiply:{digit[k] * digit[k+1]}')
-    else:
-        #print(k)
-        print(f'Sum:{digit[k] + digit[k+1]}')
+
+print(f'Multiply list: {[digit[k] * digit[k+1] for k in range(len(digit)-1) if k % 2 == 0]}')
+print(f'Sum list: {[digit[k] + digit[k+1] for k in range(len(digit)-1) if k % 2 != 0]}')
+# for k in range(len(digit)-1):
+#     if k % 2 == 0:
+#         #print(k)
+#         print(f'Multiply:{digit[k] * digit[k+1]}')
+#     else:
+#         #print(k)
+#         print(f'Sum:{digit[k] + digit[k+1]}')
 
 # display sum of all odds
-summa = 0
-for i in digit:
-    if i % 2 != 0:
-        summa += i
-print(f'Sum odds: {summa}')
+
+print(f'Sum of odds: {sum([i for i in digit if i % 2 != 0])}')
+# summa = 0
+# for i in digit:
+#     if i % 2 != 0:
+#         summa += i
+# print(f'Sum odds: {summa}')
