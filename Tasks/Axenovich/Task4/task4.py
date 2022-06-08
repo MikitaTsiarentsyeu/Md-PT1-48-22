@@ -10,11 +10,11 @@ print(Task4.check_str_v2('gergseAStgsrbv r gshbASd ibha bh abhASDa ASDefwkkbhfsd
 
 
 print(Task4.is_prime(random.randint(0, 100)))
-print(Task4.is_prime(random.randint(0, 100)))
-print(Task4.is_prime(random.randint(0, 100)))
+print(Task4.is_prime(random.randint(0, 10000000000000)))
+print(Task4.is_prime(random.randint(0, 1000000000)))
 print(Task4.is_prime(10))
 print(Task4.is_prime(7))
-print(Task4.is_prime(44))
+print(Task4.is_prime(999999000001))
 
 
 print(Task4.get_ranges([0, 1, 2, 3, 4, 7, 8, 10]))

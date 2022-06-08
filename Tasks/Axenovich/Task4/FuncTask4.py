@@ -23,9 +23,12 @@ def check_str_v2(string: str="The quick Brown Fox") -> str:
     return f'{upperCase} upper case, {lowerCase} lower case'
 
 
-def is_prime(num: int) -> bool:
+def is_prime(number: int) -> bool:
     """Give me number and I return is it a prime number or not"""
-    return num > 1 and all(num % i for i in range(2, num)) # func all() return first True found
+    for num in range(2, int(number**0.5) + 1):
+        if number % num == 0:
+                return False
+        return True
 
 
 def get_ranges(array: list) -> str:
