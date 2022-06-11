@@ -14,7 +14,7 @@ with open("test.csv", 'r') as f:
         if isFirst:
             isFirst = False
             continue
-        # print(line)
+        print(line)
         sneakers.append(line)
         print(f"{line[id_title]}: {line[color_title]} {line[make_title]} {line[model_title]}")
 
