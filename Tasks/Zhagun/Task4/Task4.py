@@ -1,10 +1,36 @@
+def check_str(string):
+    counter={'upper_case':0,'lower_case':0}
+    for i in string:
+        if i.isupper():
+            counter['upper_case']+=1
+        elif i.islower():
+            counter['lower_case']+=1
+        else:
+            pass
+    print('initial string - ',string,)
+    print(counter['upper_case'],'upper case,',counter['lower_case'],'lower case')
+check_str('My name is Veronika Zhagun')
 
-dict= ['five thirteen two eleven seventeen two one thirteen ten four eight five nineteen', {'one':1,'two':2,'three':3,'four':4,'five':5,'six':6,'seven':7,
-'eight':8,'nine':9,'ten':10,'eleven':11,'twelve':12,'thirteen':13,'fourteen':14,'fiveteen':15,'sixteen':16,'seventeen':17,'eighteen':18,'nineteen':19,'twenty':20}]
-dict=list(set([dict[1][i] for i in dict[0].split()]))
-print(dict)
-for i in range(min(len(dict[1::2]), len(dict[2::2]))):
-    print('sum:', dict[1::2][i] + dict[2::2][i]) 
-for i in range(min(len(dict[::2]), len(dict[1::2]))):
-        print('multiplication:', dict[::2][i]*dict[1::2][i])
-print('sum of odd numbers is', sum(i for i in dict if i%2 !=0))
+def isPrime(num):
+    return all(num % i for i in range(2,int(num**0.5)-1))
+print ('Number 787 is ', isPrime(787))
+print ('Number 777 is ', isPrime(777))
+
+def get_ranges(l):
+    list = f'{l[0]}'
+    Flag = False
+    for i in range(len(l) - 1):
+        if l[i + 1] - l[i] == 1:
+            Flag = True
+        else:
+            if Flag:
+                list += f'-{l[i]}, {l[i + 1]}'
+            else:
+                list += f', {l[i + 1]}'
+            Flag = False
+    if Flag:
+        list += f'-{l[-1]}'
+    return print(list)
+get_ranges([0,1,2,4,7,8,9,16])
+
+
