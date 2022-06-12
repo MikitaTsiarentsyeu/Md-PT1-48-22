@@ -1,7 +1,11 @@
 def check_str(string: str):
-    not_empty_string = string.replace(' ', '').replace(',', '').replace('.', '').replace(':', '')
-    up = sum([i.isupper() for i in not_empty_string])
-    return f"{up} - upper case, {len(not_empty_string)-up} - lower case"
+    up, low = 0, 0
+    for char in string:
+        if char.islower():
+            low += 1
+        elif char.isupper():
+            up +=1    
+    return f"{up} - upper case, {low} - lower case"
 def is_prime(number: int):
     if number % 2 == 0:
         return False
