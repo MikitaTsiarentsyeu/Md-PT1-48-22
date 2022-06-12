@@ -1,6 +1,6 @@
-#origin = [0, 1, 2, 3, 4, 7, 8, 10]
+origin = [0, 1, 2, 3, 4, 7, 8, 10]
 #origin = [4, 7, 10]
-origin = [2, 3, 8, 9]
+#origin = [2, 3, 8, 9]
 
 def get_range(origin):
     result_list = []
