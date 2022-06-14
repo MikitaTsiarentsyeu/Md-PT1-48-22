@@ -37,7 +37,7 @@ def fib(n: int) -> list:
         return cache[n]
 
     inner(n - 1)
-    return sorted(cache.values())
+    return list(cache.values())
 
 
 def fib_generator(n: int) -> int:
