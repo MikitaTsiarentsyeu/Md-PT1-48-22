@@ -38,34 +38,3 @@ def fib(n: int) -> list:
 
     inner(n - 1)
     return list(cache.values())
-
-
-def fib_generator(n: int) -> int:
-    """Generator of fibonacci numbers.
-
-        Args:
-            n (int): number of fibonacci numbers.
-
-        Yields:
-            int: fibonacci number.
-    """
-    a, b = 0, 1
-    for _ in range(n):
-        yield a
-        a, b = b, a + b
-
-
-def fib_generator_2(n: int) -> int:
-    """Generator of fibonacci numbers.
-
-        Args:
-            n (int): number of fibonacci numbers.
-
-        Yields:
-            int: fibonacci number.
-    """
-    a, b = 0, 1
-    while n > 0:
-        yield a
-        a, b = b, a + b
-        n -= 1
