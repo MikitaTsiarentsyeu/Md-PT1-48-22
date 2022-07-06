@@ -13,11 +13,7 @@ def creat_database():
         data = connected.cursor()
 
         data.execute('''create table underwear  
-                    (id serial PRIMARY KEY,
-                    underwear_name TEXT NOT NULL,
-                    products_code INT NOT NULL,
-                    price INT,
-                    in_stock int);''')
+                    (id serial key, underwear_name text, products_code int, price int, in_stock int);''')
 
         data.execute('''insert underwear (underwear_name, products_code, price, in_stock) VALUES
                     ('socks', 11, 100, 210),
@@ -26,11 +22,7 @@ def creat_database():
                     ('pants', 14, 300, 670)''')
 
         data.execute('''create tABLE outerwear 
-                    (outerwear_id serial PRIMARY KEY,
-                    outerwear_name TEXT NOT NULL,
-                    products_code INT NOT NULL,
-                    price INT,
-                    in_stock int);''')
+                    (outerwear_id serial key, outerwear_name text, products_code int, price int, in_stock int);''')
 
         data.execute('''insert outerwear (outerwear_name, products_code, price, in_stock) VALUES
                     ('t - shirts', 21, 110, 1300),
@@ -39,11 +31,7 @@ def creat_database():
                     ('jackets', 24, 602, 2500)''')
 
         data.execute('''create table shoes  
-                    (shoes_id serial PRIMARY KEY,
-                    shoes_name TEXT NOT NULL,
-                    products_code INT NOT NULL,
-                    price INT,
-                    in_stock int);''')
+                    (shoes_id serial key, shoes_name text, products_code int, price int, in_stock int);''')
 
         data.execute('''insert shoes (shoes_name, products_code, price, in_stock) VALUES
                     ('sneakers', 31, 2390, 2650),
