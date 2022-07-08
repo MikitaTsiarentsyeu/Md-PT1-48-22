@@ -28,12 +28,19 @@ def read_cart_price():
         return cur.execute("SELECT SUM(price) FROM cart").fetchall()
 
 
-def delete_user_item(num):
+def delete_user_item(number_of_deletion_item):
     with sq.connect("usercart.db") as file:
         cur = file.cursor()
-        if num != 0:
-            return cur.execute("DELETE FROM cart WHERE item_id = ?", (num,))
-            
+        list_of_item_numbers = []
+        for row in cur.execute("SELECT item_id FROM cart").fetchall():
+            list_of_item_numbers.append(row[0])
+
+        if number_of_deletion_item in list_of_item_numbers:
+            cur.execute("DELETE FROM cart WHERE item_id = ?", (number_of_deletion_item,))
+            return True
+        else:
+            return False
+
 
 def delete_all_items():
     with sq.connect("usercart.db") as file:
