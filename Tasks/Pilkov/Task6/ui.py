@@ -11,9 +11,9 @@ def show_all_in_category() -> None:
     print(bl.get_all_in_category(category))
 
 def add_to_shopping_cart() -> None:
-    id = ask('Type product id(int)')
+    product_id = ask('Type product id(int)')
     count = ask('Type product count(int)')
-    print(bl.add_to_shopping_cart(id, count))
+    print(bl.add_to_shopping_cart(product_id, count))
 
 def make_order() -> None:
     print(bl.make_order())
