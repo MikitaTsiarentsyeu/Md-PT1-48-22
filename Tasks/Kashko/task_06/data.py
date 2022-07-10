@@ -1,19 +1,23 @@
 import os
 import sqlite3 as sql
 
+
+# Get admin's login and passowrd
 ADMIN_LOGIN = os.environ.get("ADMIN_LOGIN")
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
 
+# Path to database
 db_path = os.path.realpath(os.path.join(os.path.dirname(__file__),
                                         'meters.db'))
 
+# Database connection, creating tables if not exist
+# and filling with initial data.
 con = sql.connect(db_path)
 with con:
     con.executescript('''
         CREATE TABLE IF NOT EXISTS category(
         category_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        UNIQUE (name)
+        name TEXT UNIQUE NOT NULL
         );
 
         CREATE TABLE IF NOT EXISTS meter(
@@ -108,6 +112,11 @@ except sql.IntegrityError:
 
 
 def get_all_meters() -> list[tuple]:
+    """Returns all data from meter table in database.
+
+    Returns:
+        list[tuple]: meters data.
+    """
     with con:
         return con.execute(
             '''SELECT m.meter_id, m.name, m.type, c.name, m.price, m.amount
@@ -117,12 +126,25 @@ def get_all_meters() -> list[tuple]:
 
 
 def get_categories() -> list[tuple]:
+    """Returns all data from categories table in database.
+
+    Returns:
+        list[tuple]: categories.
+    """
     with con:
         return con.execute(
             'SELECT * FROM category ORDER BY category_id').fetchall()
 
 
 def get_category(id: int) -> list[tuple]:
+    """Returns meters in one category by id from meter table in database.
+
+    Args:
+        id (int): category id.
+
+    Returns:
+        list[tuple]: meters data.
+    """
     with con:
         return con.execute(
             f'''SELECT m.meter_id, m.name, m.type, c.name, m.price, m.amount
@@ -133,6 +155,14 @@ def get_category(id: int) -> list[tuple]:
 
 
 def get_meters_by_ids(ids: tuple) -> list[tuple]:
+    """Returns meters data by ids.
+
+    Args:
+        ids (tuple): ids.
+
+    Returns:
+        list[tuple]: meter data.
+    """
     with con:
         return con.execute(
             f'''SELECT m.meter_id, m.name, m.type, c.name, m.price
@@ -143,23 +173,106 @@ def get_meters_by_ids(ids: tuple) -> list[tuple]:
 
 
 def get_orders(user: str) -> list[tuple]:
+    """Returns all orders data for current user.
+
+    Args:
+        user (str): username.
+
+    Returns:
+        list[tuple]: orders data.
+    """
     with con:
         return con.execute(
             '''SELECT order_id, date
                FROM order_ AS o
                WHERE o.user = (?)
-               ORDER BY date''', (user,)).fetchall()
+               ORDER BY date''', (user, )).fetchall()
 
 
-def place_order(user: str, content: bytes):
-    with con:
-        con.execute(
-            '''INSERT INTO order_(date, user, order_content)
-               VALUES (datetime(), (?), (?))''', (user, sql.Binary(content)))
+def place_order(user: str, content: bytes) -> bool:
+    """Adds order made by user to orders table in database
+    and returns result of operation.
+
+    Args:
+        user (str): username.
+        content (bytes): order binary data.
+
+    Returns:
+        bool: True or False.
+    """
+    try:
+        with con:
+            con.execute(
+                '''INSERT INTO order_(date, user, order_content)
+                VALUES (datetime(), (?), (?))''', (user, sql.Binary(content)))
+        return True
+    except sql.Error:
+        return
 
 
 def get_order(id: int) -> list[tuple]:
+    """Returns order binary data by order id.
+
+    Args:
+        id (int): order id.
+
+    Returns:
+        list[tuple]: order binary data.
+    """
     with con:
         return con.execute(f'''SELECT order_content
                                FROM order_
                                WHERE order_id = {id}''').fetchall()
+
+
+def insert_meter(meter: tuple) -> bool:
+    """Adds a new item to meters table in database
+    and returns the result of operation.
+
+    Args:
+        meter (tuple): meter data.
+
+    Returns:
+        bool: True or False
+    """
+    try:
+        with con:
+            con.execute(
+                '''INSERT INTO meter(name, type, category_id, price, amount)
+                   VALUES
+                        ((?), (?),
+                        (SELECT category_id FROM category
+                        WHERE name = (?)), (?), (?))''', meter)
+        return True
+    except sql.Error:
+        return
+
+
+def insert_category(name: str) -> bool:
+    """Adds a new item to categories table in database
+    and returns the result of operation.
+
+    Args:
+        name (str): category.
+
+    Returns:
+        bool: True or False
+    """
+    try:
+        with con:
+            con.execute('''INSERT INTO category(name) VALUES (?)''', (name, ))
+        return True
+    except sql.Error:
+        return
+
+
+def get_all_orders() -> list[tuple]:
+    """Returns all orders from orders table in database.
+
+    Returns:
+        list[tuple]: orders data.
+    """
+    with con:
+        return con.execute('''SELECT order_id, date, user
+                              FROM order_
+                              ORDER BY date''').fetchall()
