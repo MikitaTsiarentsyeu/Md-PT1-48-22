@@ -1,4 +1,4 @@
-import data
+import db
 import datetime
 
 available_products = []
@@ -9,7 +9,7 @@ def get_all_from_bd(*option):
     """function get all data from the database"""
 
     global available_products
-    available_products = data.get_data()
+    available_products = db.get_data()
 
     if option[0] == "show_all":
         return product_parser(available_products)
@@ -65,7 +65,7 @@ def get_product_types():
     """A function from the entire list of products determines all existing types of equipment.
     The output is in the form of a list"""
 
-    lst = data.get_data()
+    lst = db.get_data()
     types = []
 
     for i in lst:
@@ -85,23 +85,24 @@ def add_product_to_shopping_cart(name, amount: str):
     if amount.isdigit():
         for product in available_products:
             if product["Name"] == name:
-                product["Amount"] = amount
-                shopping_cart, message = data.work_with_shopping_cart("add", product)
+                select_product = product.copy()
+                select_product["Amount"] = amount
+                shopping_cart, message = db.work_with_shopping_cart("add", select_product)
                 return *product_parser(shopping_cart), message
         else:
             message = "Product was not found in catalog"
-            shopping_cart = data.work_with_shopping_cart("show")
+            shopping_cart = db.work_with_shopping_cart("show")
             return *product_parser(shopping_cart), message
     else:
         message = "Amount is incorrect"
-        shopping_cart = data.work_with_shopping_cart("show")
+        shopping_cart = db.work_with_shopping_cart("show")
         return *product_parser(shopping_cart), message
 
 
 def change_product_amount(name, amount):
     """the function changes the quantity of the product in the cart"""
 
-    shopping_cart = data.work_with_shopping_cart("show")
+    shopping_cart = db.work_with_shopping_cart("show")
 
     if amount.isdigit():
         for product in shopping_cart:
@@ -110,7 +111,7 @@ def change_product_amount(name, amount):
                     message = "Amount is incorrect"
                 else:
                     product["Amount"] = amount
-                    shopping_cart, message = data.work_with_shopping_cart("change", product)
+                    shopping_cart, message = db.work_with_shopping_cart("change", product)
                 break
         else:
             message = "Product was not found in shopping cart"
@@ -124,11 +125,11 @@ def change_product_amount(name, amount):
 def delete_product_from_shopping_cart(name):
     """the function removes the selected product from the shopping cart"""
 
-    shopping_cart = data.work_with_shopping_cart("show")
+    shopping_cart = db.work_with_shopping_cart("show")
 
     for product in shopping_cart:
         if product["Name"] == name:
-            shopping_cart, message = data.work_with_shopping_cart("delete", product)
+            shopping_cart, message = db.work_with_shopping_cart("delete", product)
             break
     else:
         message = "Product was not found in shopping cart"
@@ -139,7 +140,7 @@ def delete_product_from_shopping_cart(name):
 def show_product_from_shopping_cart():
     """the function get all products from the shopping cart"""
 
-    shopping_cart = data.work_with_shopping_cart("show")
+    shopping_cart = db.work_with_shopping_cart("show")
     message = "Your current shopping cart"
 
     return *product_parser(shopping_cart), message
@@ -149,13 +150,24 @@ def create_place_order():
     """the function generates the name of the order file
     and generates a task to create a file"""
     global order_counter
+    shopping_cart = db.work_with_shopping_cart("show")
 
     today = datetime.datetime.today()
     order_name = f"{today:%Y%m%d}-{str(order_counter).zfill(5)}"
     order_counter += 1
-    message = data.create_file_for_place_order(order_name)
+    message_1 = db.create_file_for_place_order(order_name)
 
-    return message
+    for product in available_products:
+        for order_product in shopping_cart:
+            if product["Name"] == order_product["Name"]:
+                if int(product["Amount"]) > int(order_product["Amount"]):
+                    product["Amount"] = str(int(product["Amount"]) - int(order_product["Amount"]))
+                else:
+                    product["Amount"] = "0"
+
+    message_2 = db.upgrade_data_in_file(available_products)
+
+    return message_1 + "\n" + message_2
 
 
 if __name__ == '__main__':

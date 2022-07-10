@@ -39,6 +39,7 @@ def work_with_shopping_cart(action, product=None):
 
 def create_file_for_place_order(order_number):
     global shopping_cart
+
     with open(f"{order_number}.csv", "w", encoding="utf-8", newline="") as csv_order_table:
         writer = csv.DictWriter(csv_order_table, fieldnames=shopping_cart[0].keys())
         writer.writeheader()
@@ -46,11 +47,27 @@ def create_file_for_place_order(order_number):
 
     if os.path.exists(f"{order_number}.csv"):
         message = f"Order with № {order_number} has been successfully placed"
-        shopping_cart.clear()
     else:
         message = "An error occurred while placing an order"
 
     return message
+
+
+def upgrade_data_in_file(data):
+    """Function write updated data to a initial csv-file"""
+
+    global shopping_cart
+
+    try:
+        with open("PLC.csv", "w", encoding="utf-8", newline="") as csv_table:
+            writer = csv.DictWriter(csv_table, fieldnames=data[0].keys())
+            writer.writeheader()
+            writer.writerows(data)
+
+            shopping_cart.clear()
+            return "Database has been updated"
+    except:
+        return "Error while database updated"
 
 
 if __name__ == '__main__':

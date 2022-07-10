@@ -1,5 +1,5 @@
-import UI
+import ui
 
 
 if __name__ == '__main__':
-    UI.main()
+    ui.main()
