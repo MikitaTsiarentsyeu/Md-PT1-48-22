@@ -1,0 +1,52 @@
+{
+    "category": {
+        "1": "Luminaires",
+        "2": "Lusters",
+        "3": "Wall lights",
+        "4": "Floor lamps"
+    },
+    "products": {
+        "1": {
+            "name": "Wall lamp Arlight 092929",
+            "category": "3",
+            "article": "092929",
+            "price": "129.1",
+            "count_in_stock": "121"
+        },
+        "3": {
+            "name": "Lusters Lightstar 234322",
+            "category": "2",
+            "article": "234322",
+            "price": "255.1",
+            "count_in_stock": "8"
+        },
+        "4": {
+            "name": "Light Arlight 0344",
+            "category": "3",
+            "article": "0344",
+            "price": "123.0",
+            "count_in_stock": "0"
+        },
+        "5": {
+            "name": "Luminaires MW 045",
+            "category": "1",
+            "article": "045",
+            "price": "1234.0",
+            "count_in_stock": "10"
+        },
+        "7": {
+            "name": "Light Arlight 0344",
+            "category": "4",
+            "article": "0344",
+            "price": "233.0",
+            "count_in_stock": "14"
+        },
+        "8": {
+            "name": "Luminaires Arlight 055",
+            "category": "1",
+            "article": "055",
+            "price": "1443.0",
+            "count_in_stock": "56"
+        }
+    }
+}
