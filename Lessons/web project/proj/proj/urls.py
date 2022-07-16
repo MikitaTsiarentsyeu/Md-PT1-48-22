@@ -16,8 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from blog import views as blog_views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', blog_views.home)
+    path('', blog_views.home),
+    path('posts/', blog_views.posts, name='posts'),
+    path('posts/<int:post_id>', blog_views.post, name='post'),
+    path('posts/<str:post_id>', blog_views.post, name='post'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
