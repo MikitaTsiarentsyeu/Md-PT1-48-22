@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', blog_views.home),
     path('posts/', blog_views.posts, name='posts'),
+    path('posts/add_post', blog_views.add_post, name='add_post'),
+    path('posts/add_model_form_post', blog_views.add_model_form_post, name='add_model_form_post'),
     path('posts/<int:post_id>', blog_views.post, name='post'),
     path('posts/<str:post_id>', blog_views.post, name='post'),
 ]

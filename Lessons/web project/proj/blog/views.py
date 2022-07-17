@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from datetime import datetime
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import Post
+from .models import Author, Post
+from .forms import AddPost, AddModelFormPost
 
 def home(request):
     return render(request, 'home.html')
@@ -28,7 +30,7 @@ def home(request):
 
 def posts(request):
 
-    all_posts = Post.objects.all()
+    all_posts = Post.objects.all().order_by("-issued")
 
     return render(request, 'posts.html', {'posts':all_posts})
 
@@ -37,3 +39,50 @@ def post(request, post_id):
     post = Post.objects.get(id=post_id)
 
     return render(request, 'post.html', {'post':post})
+
+def add_post(request):
+
+    if request.method == 'POST':
+
+        current_time = datetime.now()
+        form = AddPost(request.POST, request.FILES)
+
+        if form.is_valid():
+            post = Post()
+            post.author = Author.objects.all()[0]
+            post.issued = current_time
+            post.title = form.cleaned_data['title']
+            post.subtitle = form.cleaned_data['subtitle']
+            post.post_type = form.cleaned_data['post_type']
+            post.content = form.cleaned_data['content']
+            post.image = form.cleaned_data['image']
+
+            post.save()
+
+            return redirect('posts')
+
+    else:
+        form = AddPost()
+
+    return render(request, 'add_post.html', {'form': form})
+
+
+def add_model_form_post(request):
+    if request.method == 'POST':
+
+        current_time = datetime.now()
+        form = AddModelFormPost(request.POST, request.FILES)
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = Author.objects.all()[0]
+            post.issued = current_time
+            post.save()
+            form.save_m2m()
+
+            return redirect('posts')
+
+    else:
+        form = AddPost()
+
+    return render(request, 'add_post.html', {'form': form})
