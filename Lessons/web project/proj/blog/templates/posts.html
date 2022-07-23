@@ -12,6 +12,9 @@
                     <img width="30%" src="{{ post.image.url }}">
                 {% endif %}
                 <p>by {{ post.author.name }}</p>
+                {% if post.id in viewed_posts.values %}
+                    <p>|viewed|</p>
+                {% endif %}
             </div>
         {% endfor %}
     </div>
