@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+{% comment %} {% load static %} {% endcomment %}
+
+{% block title %}
+    Lections
+{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'courses/css/lections.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="course">
+            <img src="{% static 'courses/media/img.jpg' %}" alt="">
+            <div>
+                <h1>Titile</h1>
+                <p>description</p>
+            </div>
+        </div>
+        <div class="lections-list">
+
+            <div class="lection">
+                <video src="{% static 'courses/media/video.mp4' %}" controls></video>
+                <div>
+                    <h3>Lection Title</h3>
+                    <p>Lection text</p>
+                </div>
+                <!-- <video width="400" controls>
+                    <source src="{% static 'courses/media/video.mp4' %}" type="video/mp4">
+                </video> -->
+            </div>
+            <div class="lection">
+                <video src="{% static 'courses/media/video.mp4' %}" controls></video>
+                <div>
+                    <h3>Lection Title</h3>
+                    <p>Lection text</p>
+                </div>
+            </div>
+            <div class="lection">
+                <video src="{% static 'courses/media/video.mp4' %}" controls></video>
+                <div>
+                    <h3>Lection Title</h3>
+                    <p>Lection text</p>
+                </div>
+            </div>
+            <div class="lection">
+                <video src="{% static 'courses/media/video.mp4' %}" controls></video>
+                <div>
+                    <h3>Lection Title</h3>
+                    <p>Lection textLection textLection textLection textLection textLection textLection textLection textLection textLection textLection textLection textLection textLection textLection textLection textLection textLection textLection textLection textLection textLection textLection text</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}

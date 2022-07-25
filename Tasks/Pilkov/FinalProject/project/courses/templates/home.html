@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% comment %} {% load static %} {% endcomment %}
+
+{% block title %}
+    Home page
+{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'courses/css/courses.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+    <div class="couses-list">
+        <div class="course">
+            <img src="{% static 'courses/media/img.jpg' %}" alt="">
+            <p>Titile</p>
+        </div>
+        <div class="course">
+            <img src="{% static 'courses/media/img.jpg' %}" alt="">
+            <p>Titile</p>
+        </div>
+        <div class="course">
+            <img src="{% static 'courses/media/img.jpg' %}" alt="">
+            <p>Titile</p>
+        </div>
+        <div class="course">
+            <img src="{% static 'courses/media/img.jpg' %}" alt="">
+            <p>Titile</p>
+        </div>
+        <div class="course">
+            <img src="{% static 'courses/media/img.jpg' %}" alt="">
+            <p>Titile</p>
+        </div>
+        <div class="course">
+            <img src="{% static 'courses/media/img.jpg' %}" alt="">
+            <p>Titile</p>
+        </div>
+        <div class="course">
+            <img src="{% static 'courses/media/img.jpg' %}" alt="">
+            <p>Titile</p>
+        </div>
+    </div>
+
+{% endblock body %}

@@ -1,0 +1,22 @@
+.couses-list {
+    position: absolute;
+    padding: 3em 3%;
+    background-color: lightgray;
+    margin: 0 3%;
+}
+
+.course{
+    position: relative;
+    margin: 5px;
+    float: left;
+    width: 17em;
+    background-color: white;
+}
+    .course img{
+        width: 100%;
+        height: auto;
+    }
+
+    .course p{
+        text-align: center;
+    }

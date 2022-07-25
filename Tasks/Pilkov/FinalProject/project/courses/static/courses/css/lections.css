@@ -1,0 +1,41 @@
+.content {
+    margin: 0 3%;
+    padding: 1em 3%;
+    background-color: lightgray;
+}
+
+.course{
+    display: flex;
+    flex-direction: row;
+    height: 15em;
+    justify-content: center;
+}
+    .course img{
+        height: 15em;
+    }
+
+    .course div{
+        margin-left: 3em;
+    }
+
+.lections-list{
+    margin-top: 3em;
+
+}
+
+    .lection{
+        background-color: white;
+        display: flex;
+        margin: 3em auto;
+    }
+
+    .lection video{
+        width: 45%;
+    }
+    .lection div{
+        margin: 0 3em;
+        width: 55%;
+        /* height: 55vh; */
+    }
+
+
