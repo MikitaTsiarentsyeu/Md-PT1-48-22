@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% comment %} {% load static %} {% endcomment %}
+{% load static %}
 
 {% block title %}
     Home page
@@ -12,34 +12,14 @@
 {% block body %}
 
     <div class="couses-list">
+        {% for course in courses %}
         <div class="course">
-            <img src="{% static 'courses/media/img.jpg' %}" alt="">
-            <p>Titile</p>
+                <a href="{% url 'lections' course.id %}">
+                    <img src="{{ course.image.url }}" alt="">
+                </a>
+                <p>{{ course.name }}</p>
         </div>
-        <div class="course">
-            <img src="{% static 'courses/media/img.jpg' %}" alt="">
-            <p>Titile</p>
-        </div>
-        <div class="course">
-            <img src="{% static 'courses/media/img.jpg' %}" alt="">
-            <p>Titile</p>
-        </div>
-        <div class="course">
-            <img src="{% static 'courses/media/img.jpg' %}" alt="">
-            <p>Titile</p>
-        </div>
-        <div class="course">
-            <img src="{% static 'courses/media/img.jpg' %}" alt="">
-            <p>Titile</p>
-        </div>
-        <div class="course">
-            <img src="{% static 'courses/media/img.jpg' %}" alt="">
-            <p>Titile</p>
-        </div>
-        <div class="course">
-            <img src="{% static 'courses/media/img.jpg' %}" alt="">
-            <p>Titile</p>
-        </div>
+        {% endfor %}
     </div>
 
 {% endblock body %}
