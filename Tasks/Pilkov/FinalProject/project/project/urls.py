@@ -24,6 +24,7 @@ from courses import views
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('', views.CoursesView.as_view(), name='courses'),
+    path('add-course/', views.AddCourseView.as_view(), name='add-courses'),
     path('<int:course_id>', views.LectionsView.as_view(), name='lections'),
 ]
 
