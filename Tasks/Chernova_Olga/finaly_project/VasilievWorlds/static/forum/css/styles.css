@@ -1,0 +1,73 @@
+.ark {
+    background-image:url(../img/ark.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.fairoll {
+    background-image: url(../img/fairoll.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.raven {
+    background-image: url(../img/raven.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.day {
+    background-image: url(../img/day.jpeg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.night {
+    background-image: url(../img/night.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.middle {
+    background-image: url(../img/middle.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.start {
+    background-image: url(../img/start.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.format {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+a {
+	color: black;
+}
+
+a:visited {
+	color: black;
+}
+
+.left {
+    margin-left: 10%;
+    float: left;
+    display: inline;
+}
+
+.view {
+    background-color: white;
+}
+

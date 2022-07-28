@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Добавить сообщение
+{% endblock title %}
+
+
+{% block content_block %}
+<div class="theme">
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <legend>Добавление нового сообщения:</legend>
+            <input type="text" name="content" placeholder="Текст"> <br>
+            Можно добавить изображение:
+            <input type="file" name="images" placeholder="Изображение"> <br>
+            <button type="submit">Добавить</button>
+        </div>    
+    </form>
+</div>
+{% endblock content_block %}

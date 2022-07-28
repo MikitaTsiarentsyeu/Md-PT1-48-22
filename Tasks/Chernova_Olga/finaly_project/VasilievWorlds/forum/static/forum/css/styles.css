@@ -1,0 +1,169 @@
+.ark {
+    background-image:url(../img/ark.jpg);
+}
+
+.fairoll {
+    background-image: url(../img/fairoll.jpg);
+}
+
+.raven {
+    background-image: url(../img/raven.png);
+}
+
+.day {
+    background-image: url(../img/day.jpeg);
+}
+
+.night {
+    background-image: url(../img/night.jpg);
+}
+
+.middle {
+    background-image: url(../img/middle.jpg);
+}
+
+.start {
+    background-image: url(../img/start.jpg);
+}
+
+
+.format {
+    margin: 5% 8%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+a {
+	color: black;
+}
+
+a:visited {
+	color: black;
+}
+
+.header {
+    padding: 2% 5%;
+    background-color: white;
+    min-height: 28px;
+    border-radius: 25px;
+}
+
+
+
+.footer {
+    text-align: center;
+    padding: 2% 5%;
+    background-color: white;
+    border-radius: 25px;
+}
+
+.blocL {
+    display: block;
+    float: left;
+    margin-left: 15px;
+    text-shadow: #474747 3px 5px 2px, 2px 2px 2px rgba(206,89,55,0);
+}
+
+.blocR {
+    display: block;
+    float: right;
+}
+
+.gap {
+    min-height: 100px;
+    background-color: none;
+}
+
+.title {
+    
+    font-size: 80px;
+    color: #A7DD3C;
+    text-shadow: 2px 0 0px #800040, 3px 2px 0px rgba(77,0,38,0.5), 3px 0 3px #FF002B, 5px 0 3px #800015, 6px 2px 3px rgba(77,0,13,0.5), 6px 0 9px #FF5500, 8px 0 9px #802A00, 9px 2px 9px rgba(77,25,0,0.5), 9px 0 18px #FFD500, 11px 0 18px #806A00, 12px 2px 18px rgba(77,66,0,0.5), 12px 0 30px #D4FF00, 14px 0 30px #6A8000, 15px 2px 30px rgba(64,77,0,0.5), 15px 0 45px #80FF00, 17px 0 45px #408000, 17px 2px 45px rgba(38,77,0,0.5);
+    margin: 50px auto;
+    text-align: center;
+}
+
+.home {
+    background-color: white;
+    padding: 2% 5%;
+    border-radius: 25px;
+    text-indent: 20px;
+}
+
+.theme {
+    background-color: white;
+    padding: 2% 5%;
+    border-radius: 25px;
+    margin-bottom: 5px;
+}
+
+.massage {
+    border: 4px double #1B0836;
+    border-radius: 25px;
+    padding: 3px 20px;
+    margin-top: 2%;
+}
+
+button{
+    font-size:15px;
+    font-family:Arial;
+    width:auto;
+    height:auto;
+    border-width:2px;
+    color:#505739;
+    border-color:#333029;
+    font-weight:bold;
+    border-top-left-radius:15px;
+    border-top-right-radius:15px;
+    border-bottom-left-radius:15px;
+    border-bottom-right-radius:15px;
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+    text-shadow: 0px 1px 0px #ffffff;
+    background:linear-gradient(#eae0c2, #ccc2a6);
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background: linear-gradient(#ccc2a6, #eae0c2);
+  }
+
+legend {
+    margin-bottom: 15px;
+    text-indent: 20px;
+}
+
+input {
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+[type="text"] {
+    width: 100%;
+    height: 125px;
+}
+
+.book {
+    display: inline;
+    float: left;
+    width: 275px;
+    height: auto;
+    border-spacing: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.login {
+    height: 20px; 
+    width: 170px;
+}
+
+.log {
+    display: inline-block;
+    background-color: white;
+    padding: 2% 5%;
+    border-radius: 25px;
+    width: 400px;
+    margin: 0 24%;
+}

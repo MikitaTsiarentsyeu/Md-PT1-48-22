@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Книги А.Васильева
+{% endblock title %}
+
+
+{% block content_block %}
+
+<div >
+    {% regroup books by series as series_list %}
+        {% for series,books in series_list %}
+        <p >
+        <div class=" theme open">{{ series }}</div>
+            <table  class="theme hide" >
+                
+                {% for book in books %}
+                <tr>
+                    <td>
+                        <p>
+                            <a href="{{ book.url_book }}">
+                                {{ book.name }} <br>
+                            </a>
+                            <a href="{{ book.url_book }}">
+                                <img width="150px" src="{{ book.image.url }}"> <br>
+                            </a>   
+                        </p>
+                    </td>
+                    <td>{{ book.description }}</td>
+                </tr>    
+                {% endfor %}
+                
+            </table>
+        </div>    
+        </p>
+        {% endfor %}
+</div> <br>
+
+{% endblock content_block %}
