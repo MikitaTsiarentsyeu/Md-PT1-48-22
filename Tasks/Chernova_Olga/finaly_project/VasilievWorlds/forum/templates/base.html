@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'forum/css/styles.css' %}">
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+</head>
+<body class="format raven">
+    
+<p class="title">Миры А.Васильева</p>
+
+    <header class="header" style="display: block;">
+        
+            <div class="blocL" style="margin-left: 0;"><a href="../">  Главная </a></div>
+            <div class="blocL"><a href="../themas">Темы </a></div>
+            <div class="blocL"><a href="../books"> Книги</a></div>
+            <div class="blocR">
+            
+                {% if user.is_authenticated %}
+                    <div  class="blocL" style="text-align: center;" > Текущий пользователь: <br> {{ user.get_username }} </div>
+                    <div class="blocL"><a href="{% url 'logout'%}?next={{request.path}}"> Выйти </a></div>
+                {% else %}
+                    <div class="blocL"><a href="{% url 'login' %}?next={{request.path}}"> Войти </a></div>
+                {% endif %}
+               
+           
+    </header>
+ 
+<div class="gap"></div>
+
+    {% block content_block %}
+    {% endblock content_block %}
+    
+<div class="gap"></div>
+ 
+    <footer class="footer">
+
+            <p>Официальные страницы Андрея Васильева: 
+            <br>
+                <a href="https://author.today/u/reineke2013/works">Author.Today</a>,&nbsp;
+                <a href="https://www.litres.ru/andrey-vasilev-4/ob-avtore/">ЛитРес</a>,&nbsp;
+                <a href="https://vk.com/a.vasilyev1974">VK</a>
+            </p>
+    </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function($){
+            $('.hide').click(function(){
+                $(this).hide()
+            })
+            $('.open').click(function(){
+                $(this).next('table').slideToggle('slow')
+            })
+            
+        })
+    </script>
+
+    </body>
+</html>

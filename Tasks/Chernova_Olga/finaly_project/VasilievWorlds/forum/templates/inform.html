@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Сообщения
+{% endblock title %}
+
+
+{% block content_block %}
+<div class="theme">
+
+    <p> {{ theme_title }} </p>
+    {% if perms.forum.add_information %}
+        <a href="{% url 'add_informations' %}" class="blocL" style="float: none;"><p>Добавить сообщение</p></a>
+    {% endif %}
+    {% for info in inform %}
+        <div class="massage">
+            <p> {{ info.content }} </p>
+            {% if info.images %}
+                <img width=30% src="{{ info.images.url }}">
+            {% endif %}
+            <hr>
+            <p> {{ info.author }} </p>
+            <p> {{ info.create }} </p>
+        </div>
+    {% endfor %}
+
+    {% if perms.forum.add_information %}
+        <a href="{% url 'add_informations' %}" class="blocL" style="float: none;"><p>Добавить сообщение</p></a>
+    {% endif %}
+</div> 
+{% endblock content_block %}
+

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Темы для обсуждения
+{% endblock title %}
+
+
+{% block content_block %}
+<div class="theme">
+    {% for theme in themas %} 
+        <div class="massage"> 
+            <a href="{% url 'inform' theme.title %}">
+                <p>{{ theme.title }}</p>
+            </a>
+            <p>Тема была создана: {{ theme.create }}</p>
+            <p>Последнее сообщение было добавлено: {{ theme.change }}</p>
+        </div> 
+
+    {% endfor %}
+
+    {% if perms.forum.add_theme %}
+        <a href="{% url 'add_theme' %}" class="blocL" style="float: none;"><p>Добавить тему</p></a>
+    {% endif %}
+</div>
+{% endblock content_block %}
