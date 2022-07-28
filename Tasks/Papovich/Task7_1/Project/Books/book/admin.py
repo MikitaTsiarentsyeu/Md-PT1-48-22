@@ -1,0 +1,104 @@
+from django import forms
+from django.contrib import admin
+from django.utils.safestring import mark_safe
+
+# Register your models here.
+from .models import Category, Writer, Genre, Book, Reviews
+
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
+class BookAdminForm(forms.ModelForm):
+    """Форма с виджетом ckeditor"""
+    description_ru = forms.CharField(label="Описание", widget=CKEditorUploadingWidget())
+    description_en = forms.CharField(label="Описание", widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = Book
+        fields = '__all__'
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    """Категории"""
+    list_display = ("name", "url", "id")
+    list_display_links = ("name",)
+
+class ReviewInline(admin.TabularInline):
+    """Отзывы о книге"""
+    model = Reviews
+    extra = 1
+    readonly_fields = ("name", "email")
+
+@admin.register(Book)
+class BookAdmin(admin.ModelAdmin):
+    """Книги"""
+    list_display = ("title", "category", "url", "draft")
+    list_filter = ("category", "year")
+    search_fields = ("title", "category__name")
+    inlines = [ReviewInline]
+    save_on_top = True
+    save_as = True
+    list_editable = ("draft",)
+    actions = ["publish", "unpublish"]
+    form = BookAdminForm
+    readonly_fields = ("get_image",)
+
+    def get_image(self, obj):
+        return mark_safe(f'<img src={obj.poster.url} width="100" height="110"')
+
+    def unpublish(self, request, queryset):
+        """Снять с публикации"""
+        row_update = queryset.update(draft=True)
+        if row_update == 1:
+            message_bit = "1 запись была обновлена"
+        else:
+            message_bit = f"{row_update} записей были обновлены"
+        self.message_user(request, f"{message_bit}")
+
+    def publish(self, request, queryset):
+        """Опубликовать"""
+        row_update = queryset.update(draft=False)
+        if row_update == 1:
+            message_bit = "1 запись была обновлена"
+        else:
+            message_bit = f"{row_update} записей были обновлены"
+        self.message_user(request, f"{message_bit}")
+
+    publish.short_description = "Опубликовать"
+    publish.allowed_permissions = ('change', )
+
+    unpublish.short_description = "Снять с публикации"
+    unpublish.allowed_permissions = ('change',)
+
+
+@admin.register(Reviews)
+class ReviewAdmin(admin.ModelAdmin):
+    """Отзывы к книге"""
+    list_display = ("name", "email", "parent", "book", "id")
+    readonly_fields = ("name", "email")
+
+@admin.register(Genre)
+class GenreAdmin(admin.ModelAdmin):
+    """Жанры"""
+    list_display = ("name", "url")
+
+@admin.register(Writer)
+class WriterAdmin(admin.ModelAdmin):
+    """Писатель и автор"""
+    list_display = ("name", "age", "get_image")     
+    readonly_fields = ("get_image",)
+
+    def get_image(self, obj):
+        return mark_safe(f'<img src={obj.image.url} width="50" height="60"')
+    
+    get_image.short_description = "Изображение"
+
+#admin.site.register(Category, CategoryAdmin)
+#admin.site.register(Writer)
+#admin.site.register(Genre)
+#admin.site.register(Book)
+#admin.site.register(Reviews)
+
+
+
+admin.site.site_title = "Books"
+admin.site.site_header = "Books"
