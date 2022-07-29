@@ -15,8 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.shortcuts import render
-from django.urls import path
+from django.urls import include, path
 from django.conf.urls.static import static
 
 from courses import views
@@ -26,6 +25,7 @@ urlpatterns = [
     path('', views.CoursesView.as_view(), name='courses'),
     path('add-course/', views.AddCourseView.as_view(), name='add-courses'),
     path('<int:course_id>', views.LectionsView.as_view(), name='lections'),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

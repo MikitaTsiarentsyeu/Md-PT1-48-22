@@ -15,19 +15,26 @@
     <div class="header">
         <div class="header-left">
             <div><a href="/">Home</a></div>
-            <div><a href="/">Add Course</a></div>
+            {% if user.is_authenticated %}
+                <div><a href="/add-course/">Add Course</a></div>
+            {% endif %}
         </div>
         <div class="logo">
             logo
         </div>
         <div class="header-right">
-            <div><a href="#">Login</a></div>
-            <div class="dropdown">
-                <div><img src="#" alt="Profile"></div>
-                <div class="dropdown-content">
-                    <a href="#">LogOut</a>
+
+            
+            {% if user.is_authenticated %}
+                <div class="dropdown">
+                    <div><a> {{user.get_username}} </a></div>
+                    <div class="dropdown-content">
+                        <a href="/accounts/logout/">LogOut</a>
+                    </div>
                 </div>
-            </div>
+            {% else %}
+                <div><a href="/accounts/login/">Login</a></div>
+            {% endif %}
         </div>
     </div>
     {% block content %}
