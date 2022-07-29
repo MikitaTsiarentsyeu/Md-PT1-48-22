@@ -12,6 +12,7 @@ body{
   flex-wrap: nowrap;
   flex-grow: inherit;
   justify-content: space-between;
+  height: 3rem;
 }
 
   a{

@@ -12,16 +12,17 @@
             <input type="hidden" name="next" value="{{next}}">
             <h1>Please sign in</h1>
         
-            <div class="form-floating">
+            <div>
               <p>{{ form.username.label_tag }}</p>
               <p>{{ form.username }}</p>
             </div>
-            <div class="form-floating">
+            <div>
               <p>{{ form.password.label_tag }}</p>
               <p>{{ form.password }}</p>
             </div>
         
             <button type="submit">Sign in</button>
           </form>
+          <a href="{% url 'sign-up' %}"></a>
     </div>
 {% endblock content %}

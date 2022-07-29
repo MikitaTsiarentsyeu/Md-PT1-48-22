@@ -16,7 +16,7 @@
         <div class="header-left">
             <div><a href="/">Home</a></div>
             {% if user.is_authenticated %}
-                <div><a href="/add-course/">Add Course</a></div>
+                <div><a href="{% url 'add_courses' %}">Add Course</a></div>
             {% endif %}
         </div>
         <div class="logo">
@@ -29,11 +29,11 @@
                 <div class="dropdown">
                     <div><a> {{user.get_username}} </a></div>
                     <div class="dropdown-content">
-                        <a href="/accounts/logout/">LogOut</a>
+                        <a href="{% url 'logout' %}">LogOut</a>
                     </div>
                 </div>
             {% else %}
-                <div><a href="/accounts/login/">Login</a></div>
+                <div><a href="{% url 'login' %}">Login</a></div>
             {% endif %}
         </div>
     </div>
