@@ -13,10 +13,10 @@
 
     <div class="content">
         <div class="course">
-            <img src="{% static 'courses/media/img.jpg' %}" alt="">
+            <img src="{{ course.image.url }}" alt="">
             <div>
-                <h1>Titile</h1>
-                <p>description</p>
+                <h1>{{ course.name }}</h1>
+                <p>{{ course.description }}</p>
             </div>
         </div>
         <div class="lections-list">
