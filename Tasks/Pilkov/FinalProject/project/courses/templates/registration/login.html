@@ -8,21 +8,30 @@
 {% block content %}
     <div class="form-center">
         <form method="post">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{next}}">
-            <h1>Please sign in</h1>
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{next}}">
+          <h1>Please sign in</h1>
         
-            <div>
-              <p>{{ form.username.label_tag }}</p>
-              <p>{{ form.username }}</p>
-            </div>
-            <div>
-              <p>{{ form.password.label_tag }}</p>
-              <p>{{ form.password }}</p>
-            </div>
-        
-            <button type="submit">Sign in</button>
-          </form>
-          <a href="{% url 'sign-up' %}"></a>
+          <div>
+            <p>{{ form.username.label_tag }}</p>
+            <p>{{ form.username }}</p>
+          </div>
+          <div>
+            <p>{{ form.password.label_tag }}</p>
+            <p>{{ form.password }}</p>
+          </div>
+          <div class='errors'>
+            {% if form.errors %}
+                <p>
+                  <strong>{{form.non_field_errors.0}}</strong>
+                </p>
+            {% endif %}
+          </div>
+          <button type="submit">Sign in</button>
+          <div>
+            <a href="{% url 'signup' %}">Dont have account?</a>
+          </div>
+            
+        </form>
     </div>
 {% endblock content %}

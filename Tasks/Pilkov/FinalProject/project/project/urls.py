@@ -26,6 +26,7 @@ urlpatterns = [
     path('add-course/', views.AddCourseView.as_view(), name='add_courses'),
     path('<int:course_id>', views.LectionsView.as_view(), name='lections'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/signup/', views.SignUp.as_view(), name='signup'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

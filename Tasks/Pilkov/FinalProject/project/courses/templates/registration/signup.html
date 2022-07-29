@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'courses/css/form.css' %}">
+{% endblock head %}
+
+{% block content %}
+    <div class="form-center">
+          <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{next}}">
+            <h1>Please sign up</h1>
+            <div>
+              <p><label>Email</label></p>
+              <p><input name="email" type="email"></p>
+            </div>
+            <div>
+              <p><label>Username</label></p>
+              <p><input name="username" type="text"></p>
+            </div>
+            <div>
+              <p><label>Password</label></p>
+              <p><input name="password" type="password"></p>
+            </div>
+            <div class='errors'>
+              {% for error in errors %}
+                <p>
+                  <strong>{{error|capfirst}}</strong>
+                </p>
+              {% endfor %}
+            </div>
+            <button type="submit">Sign Up</button>
+          </form>
+    </div>
+{% endblock content %}
