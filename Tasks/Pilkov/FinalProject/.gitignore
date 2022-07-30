@@ -1,6 +1,4 @@
 .DS_Store
 db.sqlite3
 migrations
-project/static
-project/media/*
 project/secret_key.txt

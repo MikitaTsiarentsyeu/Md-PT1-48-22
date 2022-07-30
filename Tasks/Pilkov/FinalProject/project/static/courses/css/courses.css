@@ -1,0 +1,29 @@
+.couses-list {
+    position: absolute;
+    padding: 3em 3%;
+    background-color: lightgray;
+    margin: 0 3%;
+    width: 88%;
+}
+
+    .couses-list h1{
+        text-align: center;
+    }
+
+.course{
+    position: relative;
+    margin: 5px;
+    float: left;
+    width: 17em;
+    background-color: white;
+}
+    .course img{
+        width: 100%;
+        height: auto;
+        max-height: 20em;
+        height: 10em;
+    }
+
+    .course p{
+        text-align: center;
+    }

@@ -1,0 +1,50 @@
+.form-center{
+    margin: 5% auto;
+    background-color: white;
+    padding: 4em;
+    border-radius: 25px;
+    width: 30em;
+}
+
+    .form-center h1{
+        text-align: center;
+    }
+
+    .form-center button{
+        margin: 0.5em auto;
+        height: 3em;
+        margin-left: 37%;
+    }
+
+    .form-center p{
+        font-size: 1.1rem;
+    }
+    .form-center input{
+        width: 100%;
+        font-size: 1.2rem;
+    }
+
+    .form-center button{
+        margin: auto 25%;
+        width: 50%;
+    }
+
+    .form-center a{
+        color: black;
+        display: block;
+        text-align: center;
+        margin-bottom: 1em;
+        text-decoration-line: underline;
+    }
+
+#id_image, #id_video{
+    font-size: 1.0rem;
+}
+
+#id_text{
+    width: 100%;
+}
+
+.errors{
+    color: red;
+}
