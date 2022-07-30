@@ -32,11 +32,21 @@ class AddCourseView(LoginRequiredMixin, View):
 
 
 class LectionsView(View):
-
     def get(self, req, course_id):
+        is_owner = False
+
         course = Course.objects.get(id = course_id)
         lections = Lection.objects.filter(course_id = course_id)
-        return render(req, 'lections.html', { 'course': course, 'lections': lections })
+        if req.user.id == User.objects.get(id = course.user_id).id:
+            is_owner = True
+        return render(req, 'lections.html', { 'course': course, 'lections': lections, 'is_owner': is_owner })
+
+class AddLectionView(LoginRequiredMixin, View):
+    def get(self, req, course_id):
+        return render(req, 'add_lection.html')
+    
+    def post(self, req, course_id):
+        return render(req, 'add_lection.html')
     
 class SignUp(View):
 
@@ -60,7 +70,7 @@ class SignUp(View):
         password = req.POST.get('password')
 
         if self.is_user_exists(username = username) or self.is_user_exists(email = email):
-            return render(req, 'registration/signup.html', {'errors':['user already exist']})
+            return render(req, 'registration/signup.html', {'errors':['user already exists']})
 
         user = User(username = username, email = email)
         user.set_password(user.password)

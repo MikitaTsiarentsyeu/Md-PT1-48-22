@@ -15,18 +15,21 @@
         <div class="course">
             <img src="{{ course.image.url }}" alt="">
             <div>
-                <h1>{{ course.name }}</h1>
-                <p>{{ course.description }}</p>
+                <h1>{{ course.name|capfirst }}</h1>
+                <p>{{ course.description|capfirst }}</p>
+                {% if is_owner %}
+                    {% comment %} <a href="{% url 'add_lection' course.id %}">Add Lection</a> {% endcomment %}
+                {% endif %}
             </div>
         </div>
+        
         <div class="lections-list">
-
             {% for lection in lections %}
                 <div class="lection">
                     <video src="{{ lection.video.url }}" controls></video>
                     <div>
-                        <h3>{{lection.title}}</h3>
-                        <p>{{lection.text}}</p>
+                        <h3>{{lection.title|capfirst}}</h3>
+                        <p>{{lection.text|capfirst}}</p>
                     </div>
                 </div>
             {% endfor %}

@@ -27,6 +27,7 @@
         background-color: white;
         display: flex;
         margin: 3em auto;
+        border-radius: 25px;
     }
 
     .lection video{
