@@ -1,0 +1,12 @@
+{% extends 'admin/change_form.html' %}
+
+{% block submit_buttons_bottom %}
+    {{ block.super }}
+    <div class="submit-row">
+        <form action="/aparser/forms.py/" method="post">
+            <label for="number">Введит АРТИКУЛ: </label>
+            <input id="number" type="text" name="number" height: auto value="{{ number_autoparts }}">
+            <input type="submit" value="ЗАПУСТИТЬ ПАРСЕР">
+        </form>
+    </div>
+{% endblock %}
