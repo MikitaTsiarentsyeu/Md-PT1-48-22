@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+    My Courses
+{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'courses/css/courses.css' %}">
+{% endblock head %}
+
+{% block content %}
+
+    <div class="couses-list">
+        {% for course in courses %}
+        <div class="course">
+                <a href="{% url 'lections' course.id %}">
+                    <img src="{{ course.image.url }}" alt="">
+                </a>
+                <p>{{ course.name }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}
