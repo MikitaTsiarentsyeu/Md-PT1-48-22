@@ -22,9 +22,12 @@ from courses import views
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
+
     path('', views.CoursesView.as_view(), name='courses'),
-    path('add-course/', views.AddCourseView.as_view(), name='add_courses'),
     path('<int:course_id>', views.LectionsView.as_view(), name='lections'),
+    path('add-course/', views.AddCourseView.as_view(), name='add_courses'),
+    path('add-lection/<int:course_id>', views.AddLectionView.as_view(), name='add_lection'),
+    
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', views.SignUp.as_view(), name='signup'),
 ]

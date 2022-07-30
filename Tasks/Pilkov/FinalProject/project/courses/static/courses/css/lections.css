@@ -18,6 +18,18 @@
         margin-left: 3em;
     }
 
+    .course button{
+        font-size: 1.1rem;
+        padding: 0.9rem;
+        transition-duration: 0.3s;
+        background-color: white;
+        border-radius: 1em;
+        border: 0;
+    }
+    .course button:hover{
+        background-color: grey;
+    }
+
 .lections-list{
     margin-top: 3em;
 

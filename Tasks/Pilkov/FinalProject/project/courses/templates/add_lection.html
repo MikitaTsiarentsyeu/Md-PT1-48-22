@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'courses/css/form.css' %}">
+{% endblock head %}
+
+{% block content %}
+    <div class="form-center">
+        <h1>Add lection</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add lection</button>
+        </form>
+    </div>
+{% endblock content %}

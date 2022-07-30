@@ -16,7 +16,7 @@ class Course(models.Model):
 
 class Lection(models.Model):
     title = models.CharField(max_length=80, blank=False)
-    text = models.TextField(blank=True)
+    text = models.TextField(max_length=1000, blank=True)
     video = models.FileField(upload_to='videos', validators=[FileExtensionValidator(allowed_extensions=['mp4','webm'])])
 
     course = models.ForeignKey(Course, on_delete = models.CASCADE)

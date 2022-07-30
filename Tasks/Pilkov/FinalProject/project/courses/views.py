@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 
 from courses.models import Course, Lection
-from courses.forms import AddCourseModelForm
+from courses.forms import AddCourseModelForm, AddLectionForm
 
 # Create your views here.
 class CoursesView(View):
@@ -43,10 +43,20 @@ class LectionsView(View):
 
 class AddLectionView(LoginRequiredMixin, View):
     def get(self, req, course_id):
-        return render(req, 'add_lection.html')
+        form = AddLectionForm()
+        return render(req, 'add_lection.html', {'form': form })
     
     def post(self, req, course_id):
-        return render(req, 'add_lection.html')
+        form = AddLectionForm(req.POST, req.FILES)
+        if form.is_valid():
+            lection = Lection()
+            lection.title = form.cleaned_data['title']
+            lection.text = form.cleaned_data['text']
+            lection.video = form.cleaned_data['video']
+            lection.course = Course.objects.get(id = course_id)
+            lection.save()
+            return redirect('lections', course_id = course_id)
+        return render(req, 'add_lection.html', {'form': form,  })
     
 class SignUp(View):
 

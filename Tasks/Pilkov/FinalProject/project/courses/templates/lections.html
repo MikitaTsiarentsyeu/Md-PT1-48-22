@@ -18,7 +18,9 @@
                 <h1>{{ course.name|capfirst }}</h1>
                 <p>{{ course.description|capfirst }}</p>
                 {% if is_owner %}
-                    {% comment %} <a href="{% url 'add_lection' course.id %}">Add Lection</a> {% endcomment %}
+                    <a href="{% url 'add_lection' course.id %}">
+                        <button>Add Lection</button>
+                    </a>
                 {% endif %}
             </div>
         </div>

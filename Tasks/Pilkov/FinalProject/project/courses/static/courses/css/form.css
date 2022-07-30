@@ -37,8 +37,12 @@
         text-decoration-line: underline;
     }
 
-#id_image{
+#id_image, #id_video{
     font-size: 1.0rem;
+}
+
+#id_text{
+    width: 100%;
 }
 
 .errors{
