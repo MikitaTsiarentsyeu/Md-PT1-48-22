@@ -6,6 +6,10 @@
     width: 88%;
 }
 
+    .couses-list h1{
+        text-align: center;
+    }
+
 .course{
     position: relative;
     margin: 5px;

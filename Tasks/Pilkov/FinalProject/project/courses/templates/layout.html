@@ -24,17 +24,14 @@
         </div>
         <div class="header-right">
 
-            
             {% if user.is_authenticated %}
-                
-                <div><a href="{% url 'courses' %}">My Courses</a></div>
-
-            <div class="dropdown">
-                <div><a> {{user.get_username}} </a></div>
-                <div class="dropdown-content">
-                    <a href="{% url 'logout' %}">LogOut</a>
+                <div><a href="{% url 'my_courses' %}">My Courses</a></div>
+                <div class="dropdown">
+                    <div><a> {{user.get_username}} </a></div>
+                    <div class="dropdown-content">
+                        <a href="{% url 'logout' %}">LogOut</a>
+                    </div>
                 </div>
-            </div>
             {% else %}
                 <div><a href="{% url 'login' %}">Login</a></div>
             {% endif %}

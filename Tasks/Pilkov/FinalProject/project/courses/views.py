@@ -16,6 +16,11 @@ class CoursesView(View):
         courses = Course.objects.all()
         return render(req, 'home.html', { 'courses': courses })
 
+class MyCoursesView(View):
+    def get(self, req):
+        courses = Course.objects.filter(user = req.user)
+        return render(req, 'home.html', { 'courses': courses })
+
 class AddCourseView(LoginRequiredMixin, View):
     def get(self, req):
         return render(req, 'add_course.html', {'form': AddCourseModelForm()})

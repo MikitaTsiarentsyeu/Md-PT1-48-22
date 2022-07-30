@@ -27,6 +27,7 @@ urlpatterns = [
     path('<int:course_id>', views.LectionsView.as_view(), name='lections'),
     path('add-course/', views.AddCourseView.as_view(), name='add_courses'),
     path('add-lection/<int:course_id>', views.AddLectionView.as_view(), name='add_lection'),
+    path('my-courses/', views.MyCoursesView.as_view(), name='my_courses'),
     
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', views.SignUp.as_view(), name='signup'),
