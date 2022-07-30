@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/style.css">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+    <title>{% block title %}{% endblock %} </title>
+</head>
+<body>
+ <div class='page'>   
+    <header class="header">
+     <div class="container">
+         <div class="header__inner">
+             <div class="logo">
+             <img src="../static/sto/img/img.png" alt="logo">
+             </div>
+             <nav class="navigation">
+                 <a class='nav_link' href="{% url 'home' %}">Главная</a>
+                 <a class='nav_link' href="{% url 'services' %}">Услуги</a>
+                 <a class='nav_link' href="{% url 'contacts' %}">Контакты</a>
+                 <a class='nav_link' href="{% url 'about' %}">О нас</a>
+                 <a class='nav_link' href="{% url 'record' %}">Записаться на ремонт</a>
+             </nav>
+          </div>
+     </div>
+ </header>
+  <div class="intro">
+    <div class="container">
+        {% block content %}
+        
+        {% endblock content %}
+      </div>
+    </div>
+<footer>
+   <div>
+       <p><b>Режим работы:</b> Ежедневно с 9:00 до 21:00</p>
+        <p>+375298825269 </p>
+        <p>Stage66@gmail.com</p>
+    </div>
+    </footer>
+</div>
+</body>
+</html>
