@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>about</title>
+  <html>
+          <div class="dropdown" >
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+              <a href="{% url 'home' %}">Back</a>
+              <a href="{% url 'services' %}">Services</a>
+              <a href="{% url 'history' %}">Petswards</a>
+              <a href="{% url 'posts' %}">Comments</a>
+              <a href="{% url 'addpost' %}">Add comment</a>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+            <div class= "h1">#Charity Dogs 2 Dogs</h1></div>       
+         </head>
+         <body>
+             <p><img src="{% static 'blog/media/1002.jpg' %}"  width="50%" class="leftimg">
+    Canadian Photographer Takes Stunning Pictures of Dogs in Colored Dust Without Photoshop for charity.
+    He constantly offers new techniques that allow you to make shots more spectacular. 
+    For example, Jess sprinkled colored dust on dogs and photographed them in motion. 
+    The result was impressive dynamic shots that noticed the beauty of dogs in motion.
+    The photographer chose the color specifically for each breed in order to emphasize 
+    the beauty of the coat and the features of the physique. The effect turned out to be
+     truly magical and for this he did not have to use Photoshop. We invite you to take a 
+     look at his amazing work and no less attractive dogs.  When you 
+     buy services you help dogs. How? Everything is easy. You choose services, call us and we organize all for you. </p>
+     
+     <p><img src="{% static 'blog/media/1003.jpg' %}" width="50%" class="rightimg">
+   25% of cost go to charity. Then our team  
+    transfer your donation to the dogs. Also you can visit these dogs with us. The dogs so kind, and all of them want to have 
+    the own home. Maybe your dream is to have the best friend and you will find him thought these pets. Join us!) It’s your & 
+    their chance!)</p>
+</body>
+</html>
+<style>
+    .dropbtn {
+      float:right;
+      background-color: black;
+      color: white;
+      padding: 16px;
+      font-size: 22px;
+      border: none;
+      ;
+    }
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: black;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #ddd;}
+    
+    .dropdown:hover .dropdown-content {display: block;}
+    
+    .dropdown:hover .dropbtn {background-color: #3e8e41;}          
+             
+    body {
+      background:black ;
+    }
+   
+    .block {
+    overflow: hidden;
+    }
+    
+    .block {
+      display: block;
+      width: 250px;
+      height: 200px;
+    }
+    
+    .block > img {
+      display: block;
+      width: 100%;
+    }
+    
+    .block .bottom {
+      display: flex;
+      justify-content: space-around;
+      display: block;
+      width: 100%;
+      background: black;
+      padding: 10px;
+      box-sizing: border-box;
+      position: relative;
+    }
+    
+    .title {
+      display: block;
+      font-size: 100%;
+      color: white;
+      text-align:center
+    }
+    
+    .des {
+      display: block;
+      font-size: 100%;
+      color: white;
+      text-align:center
+    
+    }
+    .h1 {
+      display: block;
+      font-size: 400%;
+      color: white;
+      text-align:center;
+    }
+
+    h2 {
+    display: block;
+    color: white;
+    display: flex;
+    }
+
+    p {
+    display: block;
+    color: white;
+    font-size: 30px;
+    text-align: justify;   
+    float: left;
+       
+    }
+
+   .leftimg {
+    float:left; 
+    margin: 7px 7px 7px 0; 
+   }
+   .rightimg  {
+    float: right;
+    margin: 7px 0 7px 7px; 
+   }
+  </style>
+
+
+
+
+  
+ 
+    

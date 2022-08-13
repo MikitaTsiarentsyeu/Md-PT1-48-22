@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Petswards</title>
+  <html>
+          <div class="dropdown" >
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+              <a href="{% url 'home' %}">Back</a>
+              <a href="{% url 'about' %}">About</a>
+              <a href="{% url 'services' %}">Services</a>
+              <a href="{% url 'posts' %}">Comments</a>
+              <a href="{% url 'addpost' %}">Add comment</a>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+            <div class= "h1">#Charity Dogs 2 Dogs</h1></div>        
+          </html>
+        </style>
+    </head>
+    <body>
+        {% for history in histors %}
+            <div>
+                {% if history.image_history %}
+                <p><img src="{{ history.image_history.url }}"  width="50%" class="leftimg">{{history.title}}{{history.history}}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </body>
+    
+    
+    <div class="bottom">
+       <div class="title">Phone number: +375 (33) 379 44 22 </div>
+       <div class="des">Email: charityDogs2Dogs@list.com</div>
+     </div>
+    </div>  
+
+          <style>
+            .dropbtn {
+              float:right;
+              background-color: black;
+              color: white;
+              padding: 16px;
+              font-size: 22px;
+              border: none;
+              ;
+            }
+            
+            .dropdown {
+              position: relative;
+              display: inline-block;
+            }
+            
+            .dropdown-content {
+              display: none;
+              position: absolute;
+              background-color: black;
+              min-width: 160px;
+              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+              z-index: 1;
+            }
+            
+            .dropdown-content a {
+              color: white;
+              padding: 12px 16px;
+              text-decoration: none;
+              display: block;
+            }
+            
+            .dropdown-content a:hover {background-color: #ddd;}
+            
+            .dropdown:hover .dropdown-content {display: block;}
+          
+            .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+            body {
+      background:black ;
+    }
+   
+    .block {
+    overflow: hidden;
+}
+    
+    .block {
+      display: block;
+      width: 250px;
+      height: 200px;
+    }
+    
+    .block > img {
+      display: block;
+      width: 100%;
+    }
+    
+    .block .bottom {
+      display: flex;
+      justify-content: space-around;
+      display: block;
+      width: 100%;
+      background: black;
+      padding: 10px;
+      box-sizing: border-box;
+      position: relative;
+    }
+    
+    .title {
+      display: block;
+      font-size: 100%;
+      color: white;
+      text-align:center
+    }
+    
+    .des {
+      display: block;
+      font-size: 100%;
+      color: white;
+      text-align:center}
+    
+    .h1 {
+      display: block;
+      font-size: 400%;
+      color: white;
+      text-align:center;
+  
+    }
+
+    h2 {
+    display: block;
+    color: white;
+    display: flex;
+    }
+
+    p{
+        display: block;
+        color: white;
+        font-size: 30px;
+        text-align: justify;
+        
+        float: left;
+       
+       }
+
+   .leftimg {
+    float:left; 
+    margin: 7px 7px 7px 0; 
+   }
+   .rightimg  {
+    float: right; 
+    margin: 7px 0 7px 7px; 
+   }
+
+
+
+
+
+                      
+
+    
+        
+           
+  
+
+
+
