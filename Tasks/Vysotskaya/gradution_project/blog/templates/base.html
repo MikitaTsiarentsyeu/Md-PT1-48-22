@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <div class="dropdown" style="float:le;">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+              <a href="http:Ourservices/">About</a>
+              <a href="http:posts/">Comments</a>
+              <a href="http:add_post/">Add post</a>
+              <a href="http:history/">Charity box</a>
+              <a href="{% url 'services' %}">Services</a>
+            </div>
+
+            
+
+            <style>
+
+body {
+  background:black ;
+}
+
+.block {
+  display: block;
+  width: 250px;
+  height: 200px;
+}
+
+.block > img {
+  display: block;
+  width: 100%;
+}
+
+.block .bottom {
+  display: flex;
+  justify-content: space-around;
+  display: block;
+  width: 100%;
+  background: black;
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.title {
+  display: block;
+  font-size: 100%;
+  color: red;
+  text-align:center
+}
+
+.des {
+  display: block;
+  font-size: 100%;
+  color: red;
+  text-align:center
+
+}
+* Кнопка выпадающего списка */
+.dropbtn {
+  float:right;
+  background-color: black;
+  color: red;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  ;
+}
+
+/* Контейнер <div> - необходим для размещения выпадающего содержимого */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Выпадающее содержимое (скрыто по умолчанию) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Ссылки внутри выпадающего списка */
+.dropdown-content a {
+  color: red;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Изменение цвета выпадающих ссылок при наведении курсора */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Показать выпадающее меню при наведении курсора */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+            </style>
+
+
+
+
+          </div>
+        <meta charset="UTF-8">
+        <title>Blogs</title>
+        <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    </head>
+    <body>
+        <div id="header" style="display:flex">
+            <a style="width: 90%;" href="{% url 'posts' %}"><h1 id="logo">Blogs</h1></a>
+           
+            {% if perms.blog.add_post %}  
+                <a href=""><p>Add post</p></a>
+            {% endif %}
+        </div>
+        <div id="content">
+
+            {% block content %}
+            {% endblock content %}
+            <div class="bottom">
+                <div><h1>#Pet charity box</h1></div>
+                <div class="title">Phone number: +375 (33) 379 44 22 </div>
+                <div class="des">Email: petcharitybox@list.com</div>
+              </div>
+            </div>
+        
+    </body>
+</html>
