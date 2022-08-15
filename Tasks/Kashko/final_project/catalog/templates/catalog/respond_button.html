@@ -1,0 +1,3 @@
+<div class="content is-small is-flex is-flex-direction-row is-justify-content-flex-end">    
+    <a href="{% url 'item' item.id %}respond" class="button is-primary{% if not item.is_active %} is-static{% endif %}">{% if item.type == 'f' %}Claim item{% else %}I've found it{% endif %}</a>
+</div>

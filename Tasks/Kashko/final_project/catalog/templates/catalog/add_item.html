@@ -1,0 +1,229 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% block title %}Add item{% endblock title %}
+{% block content %}
+<div class="card columns is-desktop m-0">
+    <div class="card-content column is-one-third-desktop p-3">
+        <div class="content is-small">
+            <h6 class="title is-6">Steps to return a found or lost item</h6>
+            <ol>
+                <li>Fill out the form.</li>
+                <li>Confirm your email address.</li>
+                <li>Wait for email from possible owner or founder.</li>
+            </ol>
+            <p><strong>N.B.:</strong> Passports and identity cards should be brought to your city police department.</p>
+        </div>
+    </div>
+    <div class="card-content column p-3">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="field">
+                <label class="label">{{ contact_form.first_name.label_tag }}</label>
+                <div class="control has-icons-left">
+                    <input
+                        class="input"
+                        type="text"
+                        name="first_name"
+                        placeholder="{{ contact_form.first_name.help_text }}"
+                    />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </div>
+                {% if contact_form.first_name.errors %}
+                {% for error in contact_form.first_name.errors %}
+                <p class="help is-danger">{{ error|escape }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label">{{ contact_form.last_name.label_tag }}</label>
+                <div class="control has-icons-left">
+                    <input
+                        class="input"
+                        type="text"
+                        name="last_name"
+                        placeholder="{{ contact_form.last_name.help_text }}"
+                    />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </div>
+                {% if contact_form.last_name.errors %}
+                {% for error in contact_form.last_name.errors %}
+                <p class="help is-danger">{{ error|escape }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label">{{ contact_form.email.label_tag }}</label>
+                <div class="control has-icons-left">
+                    <input
+                        class="input"
+                        type="email"
+                        name="email"
+                        placeholder="{{ contact_form.email.help_text }}"
+                    />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                </div>
+                {% if contact_form.email.errors %}
+                {% for error in contact_form.email.errors %}
+                <p class="help is-danger">{{ error|escape }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label">{{ contact_form.phone_number.label_tag }}</label> 
+                <div class="control has-icons-left">
+                    <input
+                        class="input"
+                        type="tel"
+                        name="phone_number"
+                        placeholder="{{ contact_form.phone_number.help_text }}"
+                    />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-phone"></i>
+                    </span>
+                </div>
+                {% if contact_form.phone_number.errors %}
+                {% for error in contact_form.phone_number.errors %}
+                <p class="help is-danger">{{ error|escape }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label">{{ item_form.name.label_tag }}</label>
+                <div class="control has-icons-left">
+                    <input
+                        class="input"
+                        type="text"
+                        name="name"
+                        placeholder="{{ item_form.name.help_text }}"
+                    />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-box"></i>
+                    </span>
+                </div>
+                {% if item_form.name.errors %}
+                {% for error in item_form.name.errors %}
+                <p class="help is-danger">{{ error|escape }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label">{{ item_form.category.label_tag }}</label>
+                <div class="control has-icons-left">
+                    <div class="select is-fullwidth">
+                        <select name="category">
+                            {% for category in item_form.category %}
+                            {{ category|title }}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-question"></i>
+                    </span>
+                </div>
+                {% if item_form.category.errors %}
+                {% for error in item_form.category.errors %}
+                <p class="help is-danger">{{ error|escape }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label">{{ item_form.type.label_tag }}</label>
+                <div class="control has-icons-left">
+                    <div class="select is-fullwidth">
+                        <select name="type">
+                            {% for key, value in item_form.fields.type.choices %}
+                            <option value="{{ key }}">{{ value|capfirst }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-question"></i>
+                    </span>
+                </div>
+                {% if item_form.type.errors %}
+                {% for error in item_form.type.errors %}
+                <p class="help is-danger">{{ error|escape }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label">{{ item_form.city.label_tag }}</label>
+                <div class="control has-icons-left">
+                    <div class="select is-fullwidth">
+                        <select name="city">
+                            {% for city in item_form.city %}
+                            {{ city|title }}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </span>
+                </div>
+                {% if item_form.city.errors %}
+                {% for error in item_form.city.errors %}
+                <p class="help is-danger">{{ error|escape }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label">{{ item_form.description.label_tag }}</label>
+                <div class="control">
+                    <textarea class="textarea" name="description" placeholder="{{ item_form.description.help_text }}"></textarea>
+                </div>
+                {% if item_form.description.errors %}
+                {% for error in item_form.description.errors %}
+                <p class="help is-danger">{{ error|escape }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div id="file-js-example" class="field file is-primary is-normal is-boxed has-name">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="image" accept="image/*">
+                    <span class="file-cta">
+                        <span class="file-icon">
+                        <i class="fas fa-camera"></i>
+                        </span>
+                        <span class="file-label">
+                            {{ item_form.image.help_text }}
+                        </span>
+                    </span>
+                    <span class="file-name">
+                        No image
+                    </span>
+                </label>
+            </div>
+            {% if item_form.image.errors %}
+            {% for error in item_form.image.errors %}
+            <p class="help is-danger mb-3">{{ error|escape }}</p>
+            {% endfor %}
+            {% endif %}
+
+            <div class="field is-grouped is-grouped-right">
+                <div class="control">
+                    <button class="button is-primary" type="submit">Submit</button>
+                </div>
+                <div class="control">
+                    <button class="button is-light" type="submit" name="cancel">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
