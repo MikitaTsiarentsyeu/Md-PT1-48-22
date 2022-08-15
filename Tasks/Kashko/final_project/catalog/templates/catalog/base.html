@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{% block title %}{% endblock title %}</title>
+        <link
+            rel="shortcut icon"
+            href="{% static 'catalog/images/logo_title.png' %}"
+        />
+        <link rel="stylesheet" href="{% static 'bulma/css/mystyles.css' %}" />
+        <link rel="stylesheet" href="{% static 'catalog/css/style.css' %}" />
+        <script
+            defer
+            src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        ></script>
+    </head>
+    <body class="has-navbar-fixed-top">
+        <nav
+            class="navbar is-primary is-fixed-top"
+            role="navigation"
+            aria-label="main navigation"
+        >
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item py-0" href="{% url 'home' %}">
+                        <img
+                            src="{% static 'catalog/images/logo_transparent.svg' %}"
+                            alt="znachodka"
+                        />
+                    </a>
+
+                    <a
+                        role="button"
+                        class="navbar-burger"
+                        aria-label="menu"
+                        aria-expanded="false"
+                        data-target="navbarBasicExample"
+                    >
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" href="{% url 'home' %}"
+                            ><strong> Home </strong></a
+                        >
+
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link"><strong> Items </strong></a>
+
+                            <div class="navbar-dropdown">
+                                <a
+                                    class="navbar-item"
+                                    href="{% url 'all_items' %}"
+                                >
+                                    All items
+                                </a>
+                                <hr class="navbar-divider" />
+                                <a
+                                    class="navbar-item"
+                                    href="{% url 'by_type' 'f' %}"
+                                >
+                                    Found items
+                                </a>
+                                <hr class="navbar-divider" />
+                                <a
+                                    class="navbar-item"
+                                    href="{% url 'by_type' 'l' %}"
+                                >
+                                    Lost items
+                                </a>
+                            </div>
+                        </div>
+
+                        <a class="navbar-item" href="{% url 'help' %}"><strong> Help </strong></a>
+                    </div>
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a class="button is-primary">
+                                    <strong>Sign up</strong>
+                                </a>
+                                <a class="button is-light"> Log in </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="hero is-light is-fullheight-with-navbar">
+            <div class="hero-body is-align-items-flex-start py-4">
+                <div class="container">
+                    {% block content %} {% endblock content %}
+                </div>
+            </div>
+        </section>
+        {% include 'catalog/footer.html' %}
+    </body>
+    <script src="{% static 'catalog/js/burger-menu.js' %}"></script>
+    <script src="{% static 'catalog/js/modal.js' %}"></script>
+    <script src="{% static 'catalog/js/file-name.js' %}"></script>
+</html>

@@ -1,0 +1,81 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% block title %}Items{% endblock title %}
+{% block content %}
+<nav class="level mb-4">
+    <div class="level-left">
+        <div class="level-item">
+            <nav class="breadcrumb is-small" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="{% url 'all_items' %}">All items</a></li>
+                    {% if q %}
+                    <li><a href="{% url 'search_results'%}?q={{ q }}">"{{ q }}"</a></li>
+                    {% endif %}                            
+                    {% if type %}
+                    <li><a href="{% url 'by_type' type|first %}">{{ type|last|capfirst }}</a></li>
+                    {% endif %}
+                    {% if category %}
+                    <li><a href="{% url 'by_category' category|first %}">{{ category|last|capfirst }}</a></li>
+                    {% endif %}
+                    {% if city %}
+                    <li><a href="{% url 'by_city' city|first %}">{{ city|last|capfirst }}</a></li>
+                    {% endif %}
+                    <li></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="level-right">
+        <nav class="pagination is-small is-right" role="navigation" aria-label="pagination">
+            <ul class="pagination-list">
+                <li><p class="is-size-7">Items per page: </p></li>
+                <li><a class="pagination-link {% if per_page == 12 %}is-current{% endif %}" {% if per_page == 24 %}href="?{% if q %}q={{ q }}&{% endif %}per_page=12"{% endif %}>12</a></li>
+                <li><a class="pagination-link {% if per_page == 24 %}is-current{% endif %}" {% if per_page == 12 %}href="?{% if q %}q={{ q }}&{% endif %}per_page=24"{% endif %}>24</a></li>
+            </ul>
+        </nav>
+    </div>
+</nav>
+<div class="columns is-multiline">
+    {% if items_set %}
+    {% for item in page_obj %}
+    <div class="column is-one-quarter-fullhd is-one-third-widescreen is-one-third-desktop is-half-tablet">
+        <div class="card">
+            <div class="card-image p-3">
+                <figure class="image is-4by3">
+                    {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="Item image not found"/>
+                    {% else %}
+                    <img src="{% static 'images/items/default_item.png' %}" alt="Default image not found">                                
+                    {% endif %}
+                </figure>
+                {% include 'catalog/modal.html' %}                                                              
+            </div>
+            <div class="card-content p-3">
+                <div class="tags are-normal is-flex is-justify-content-space-between">
+                    <div>
+                        <a href="{% url 'by_type' item.type %}" class="tag {% if item.type == 'f' %} is-success {% else %} is-danger {% endif %} is-light">{{ item.get_type }}</a>
+                        <a href="{% url 'by_category' item.category_id %}" class="tag is-info is-light">{{ item.category }}</a>
+                    </div>   
+                    <div>
+                        <p class="tag {% if item.is_active %}is-success{% endif %} is-light">{{ item.get_status }}</p>
+                    </div>                 
+                </div>
+                <div class="content is-small">
+                    <a href="{% url 'item' item.id  %}"><h6 class="title is-6">Item: {{ item.name|capfirst }}</h6></a>
+                    <p><a href="{% url 'by_city' item.city_id %}"><b>City: </b> {{ item.city|capfirst }}</a></p>
+                    <p><b>Date: </b> {{ item.create_date|date:"d-m-Y" }} {{ item.create_date|time:"H:i" }}</p>
+                </div>
+                {% include 'catalog/respond_button.html' %}
+            </div>            
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% include 'catalog/pagination.html' %}
+{% else %}
+</div>
+<div class="column has-text-centered">
+    No items are available.
+</div>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% block title %}{{ item.name|capfirst }}{% endblock title %}
+{% block content %}
+<nav class="level mb-4">
+    <div class="level-left">
+        <nav class="breadcrumb is-small" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="{% url 'all_items' %}">All items</a></li>                
+                <li><a href="{% url 'by_type' item.type %}">{{ item.get_type_display|capfirst }}</a></li>
+                <li><a href="{% url 'by_category' item.category_id %}">{{ item.category|capfirst }}</a></li>
+                <li><a href="{% url 'by_city' item.city_id %}">{{ item.city|capfirst }}</a></li>
+                <li class="is-active"><a href="#" aria-current="page">{{ item.name|capfirst }}</a></li>
+            </ul>
+        </nav>
+    </div>
+</nav>
+<div class="card columns is-multiline m-0">
+    <div class="card-image column is-one-third p-3">
+        <figure class="image">
+            {% if item.image %}
+            <img src="{{ item.image.url }}" alt="Item image not found"/>
+            {% include 'catalog/modal.html' %}
+            {% else %}
+            <img src="{% static 'images/items/default_item.png' %}" alt="Default image not found">                                
+            {% endif %}
+        </figure>
+    </div>
+    <div class="card-content column p-3">
+        <div class="tags are-normal is-flex is-justify-content-space-between">
+            <div>
+                <a href="{% url 'by_type' item.type %}" class="tag {% if item.type == 'f' %} is-success {% else %} is-danger {% endif %} is-light">{{ item.get_type }}</a>
+                <a href="{% url 'by_category' item.category_id %}" class="tag is-info is-light">{{ item.category }}</a>
+            </div>   
+            <div>
+                <p class="tag {% if item.is_active %}is-success{% endif %} is-light">{{ item.get_status }}</p>
+            </div>                 
+        </div>
+        <div class="content is-small">
+            <a href="{% url 'item' item.id  %}"><h6 class="title is-6">Item: {{ item.name|capfirst }}</h6></a>
+            <p><a href="{% url 'by_city' item.city_id %}"><b>City: </b> {{ item.city|capfirst }}</a></p>
+            <p><b>Description: </b> {{ item.description }}</p>
+            <p><b>Date: </b> {{ item.create_date|date:"d-m-Y" }} {{ item.create_date|time:"H:i" }}</p>
+        </div>
+        {% include 'catalog/respond_button.html' %}
+    </div>
+</div>    
+{% endblock content %}

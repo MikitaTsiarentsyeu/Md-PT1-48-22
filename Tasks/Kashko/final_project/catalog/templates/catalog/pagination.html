@@ -1,0 +1,29 @@
+<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    {% if page_obj.has_previous %}
+    <a class="pagination-previous" href="?{% if q %}q={{ q }}&{% endif %}page={{ page_obj.previous_page_number }}">Previous</a>
+    {% else %}
+    <a class="pagination-previous is-disabled" title="This is the first page">Previous</a>
+    {% endif %}            
+    {% if page_obj.has_next %}
+    <a class="pagination-next" href="?{% if q %}q={{ q }}&{% endif %}page={{ page_obj.next_page_number }}">Next page</a>
+    {% else %}
+    <a class="pagination-next is-disabled" title="This is the last page">Next page</a>
+    {% endif %}
+    <ul class="pagination-list">
+        {% if page_obj.has_previous %}
+        <li>
+            <a class="pagination-link" href="?{% if q %}q={{ q }}&{% endif %}page=1" aria-label="Goto page 1">1</a>
+        </li>                
+        <li><span class="pagination-ellipsis">&hellip;</span></li>
+        {% endif %}
+        <li>
+            <a class="pagination-link is-current" aria-label="Page {{ page_obj.number }}" aria-current="page">{{ page_obj.number }}</a>
+        </li>
+        {% if page_obj.has_next %}
+        <li><span class="pagination-ellipsis">&hellip;</span></li>
+        <li>
+            <a class="pagination-link" href="?{% if q %}q={{ q }}&{% endif %}page={{ page_obj.paginator.num_pages }}" aria-label="Goto page {{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
